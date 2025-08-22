@@ -6,141 +6,106 @@
   <title>Portfolio</title>
   <style>
     /* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background-color: #0d1117;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    /* Navbar */
+    header {
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #0d1117;
+      z-index: 1000;
+    }
+    .logo { font-size: 20px; font-weight: bold; color: #fff; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links li { margin-left: 30px; }
+    .nav-links a { text-decoration: none; color: #fff; transition: 0.3s; cursor: pointer; }
+    .nav-links a.active, .nav-links a:hover { color: #00eaff; }
+    /* Sections */
+    section { padding: 100px 80px; min-height: 100vh; display: none; }
+    /* Hero Section (default show) */
+    #home { display: flex; justify-content: space-between; align-items: center; padding-top: 140px; }
+    .hero-text { max-width: 600px; }
+    .hero-text h3 { font-size: 22px; margin-bottom: 10px; color: #fff; }
+    .hero-text h1 { font-size: 45px; margin-bottom: 10px; font-weight: bold; }
+    .hero-text h2 { font-size: 26px; margin-bottom: 15px; }
+    .hero-text h2 span { color: #00eaff; }
+    .hero-text p { font-size: 16px; margin-bottom: 20px; line-height: 1.6; color: #c9c9c9; }
+    .btn { padding: 10px 20px; background: #00eaff; border: none; border-radius: 25px; cursor: pointer; font-size: 16px; font-weight: bold; color: #0d1117; transition: 0.3s; text-decoration:none; }
+    .btn:hover { background: #00c7d9; }
+    .hero-img img { width: 350px; height: auto; border-radius: 20px; box-shadow: 0 0 30px #00eaff; }
+    /* Skills bars */
+    .bar { background: #222; border-radius: 20px; margin: 15px 0; overflow: hidden; }
+    .bar span { display: block; height: 20px; line-height: 20px; padding-left: 10px; background: #00eaff; color: #0d1117; font-weight: bold; }
+    /* Portfolio cards */
+    .portfolio-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .card { background: #161b22; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); transition: transform .3s; }
+    .card:hover { transform: scale(1.05); }
+    /* Contact form */
+    .contact form { display: flex; flex-direction: column; max-width: 400px; }
+    .contact input, .contact textarea { margin: 10px 0; padding: 10px; border: none; border-radius: 5px; }
 
-body {
-  background-color: #0d1117;
-  color: #fff;
-  overflow-x: hidden;
-}
-
-/* Navbar */
-header {
-  padding: 20px 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #fff;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-}
-
-.nav-links li {
-  margin-left: 30px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #fff;
-  transition: 0.3s;
-}
-
-.nav-links a.active,
-.nav-links a:hover {
-  color: #00eaff;
-}
-
-/* Hero Section */
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 100px 80px;
-}
-
-.hero-text {
-  max-width: 600px;
-}
-
-.hero-text h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-.hero-text h1 {
-  font-size: 45px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.hero-text h2 {
-  font-size: 26px;
-  margin-bottom: 15px;
-}
-
-.hero-text h2 span {
-  color: #00eaff;
-}
-
-.hero-text p {
-  font-size: 16px;
-  margin-bottom: 20px;
-  line-height: 1.6;
-  color: #c9c9c9;
-}
-
-/* Social Icons */
-.social-icons {
-  margin-bottom: 20px;
-}
-
-.social-icons a {
-  display: inline-block;
-  margin-right: 12px;
-  font-size: 16px;
-  color: #00eaff;
-  border: 1px solid #00eaff;
-  border-radius: 50%;
-  padding: 8px;
-  transition: 0.3s;
-}
-
-.social-icons a:hover {
-  background: #00eaff;
-  color: #0d1117;
-}
-
-/* Button */
-.btn {
-  padding: 10px 20px;
-  background: #00eaff;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  color: #0d1117;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #00c7d9;
-}
-
-/* Hero Image */
-.hero-img img {
-  width: 350px;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: 0 0 30px #00eaff;
-}
-
+    /* === About Section Styling (CV Style) === */
+    #about {
+      background: #161b22;
+      padding: 100px 80px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      margin: 50px auto;
+      max-width: 1100px;
+    }
+    #about h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #00eaff;
+    }
+    .about-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .about-box img {
+      width: 280px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00eaff;
+    }
+    .about-text {
+      flex: 1;
+    }
+    .about-text h3 {
+      font-size: 22px;
+      margin: 15px 0 10px;
+      color: #00eaff;
+    }
+    .about-text p, 
+    .about-text ul {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #c9c9c9;
+      margin-bottom: 15px;
+    }
+    .about-text ul {
+      padding-left: 20px;
+      list-style: disc;
+    }
   </style>
-  <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -149,35 +114,116 @@ header {
     <nav>
       <div class="logo">Portfolio.</div>
       <ul class="nav-links">
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="#">Skills</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="">Contact</a></li>
+        <li><a onclick="showSection('home')" class="active">Home</a></li>
+        <li><a onclick="showSection('about')">About</a></li>
+        <li><a onclick="showSection('skills')">Skills</a></li>
+        <li><a onclick="showSection('portfolio')">Portfolio</a></li>
+        <li><a onclick="showSection('contact')">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section id="home" style="display:flex;">
     <div class="hero-text">
       <h3>Hello, It's Me</h3>
       <h1>Ahmad Aslam</h1>
       <h2>And I'm a <span>Frontend Developer</span></h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus nulla sed saepe rerum, animi expedita.</p>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-      <button class="btn">Download CV</button>
+      <p>Main ek passionate frontend developer hn jo responsive aur beautiful web interfaces banata hn.</p>
+      <a onclick="showSection('about')" class="btn">View My CV</a>
     </div>
     <div class="hero-img">
       <img src="image.jpg" alt="profile">
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <!-- About Section (CV Style) -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-box">
+      <img src="image.jpg" alt="My Picture">
+      <div class="about-text">
+        <h3>Hi, I'm Ahmad Aslam 👋</h3>
+        <p>
+          Mai Ahmad Aslam hn, Lahore se. Abhi FSC pre-medical kar raha hn aur saath me web development seekh raha hn.  
+          Main ek hardworking aur dedicated insan hn jo hamesha nayi cheezen seekhne aur improve karne ki koshish karta hn.
+        </p>
+
+        <h3>🎯 Objective</h3>
+        <p>
+          Apni skills aur dedication ka use karke ek aise platform par kaam karna jahan main apne career ko grow kar sakun aur company ke goals achieve karne me help kar sakun.
+        </p>
+
+        <h3>📚 Education</h3>
+        <ul>
+          <li>F.Sc Pre-Medical – Lahore</li>
+          <li>Matriculation – Science Group</li>
+        </ul>
+
+        <h3>💻 Skills</h3>
+        <ul>
+          <li>HTML5, CSS3, JavaScript</li>
+          <li>Responsive Web Design</li>
+          <li>Git & GitHub</li>
+          <li>React (Basic)</li>
+          <li>Problem Solving & Teamwork</li>
+        </ul>
+
+        <h3>📂 Experience</h3>
+        <p>
+          Abhi learning phase me hn, but maine apni practice projects (Portfolio Website, To-Do App) banaye hain.
+        </p>
+
+        <h3>📞 Contact Info</h3>
+        <p>Email: ahmad@example.com</p>
+        <p>Phone: +92-300-1234567</p>
+        <p>GitHub: <a href="https://github.com/ahmadsura008-sudo" target="_blank">github.com/ahmadsura008-sudo</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="bar"><span style="width:90%">HTML - 90%</span></div>
+    <div class="bar"><span style="width:85%">CSS - 85%</span></div>
+    <div class="bar"><span style="width:70%">JavaScript - 70%</span></div>
+    <div class="bar"><span style="width:60%">React - 60%</span></div>
+    <div class="bar"><span style="width:50%">Git & GitHub - 50%</span></div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2>My Projects</h2>
+    <div class="portfolio-items">
+      <div class="card"><h3>Portfolio Website</h3><p>Ye meri personal website h jahan maine apna project showcase kiya ha.</p></div>
+      <div class="card"><h3>To-Do App</h3><p>Simple JS app jahan tasks add/edit/delete kiye ja sakte hain.</p></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send</button>
+    </form>
+    <p>Email: ahmad@example.com</p>
+    <p>GitHub: <a href="#">github.com/ahmadsura008-sudo</a></p>
+  </section>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
+      let sec = document.getElementById(id);
+      if (id === "home") {
+        sec.style.display = "flex";
+      } else {
+        sec.style.display = "block";
+      }
+    }
+  </script>
 </body>
 </html>
